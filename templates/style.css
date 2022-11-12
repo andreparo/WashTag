@@ -1,0 +1,56 @@
+html {
+  background-color: rgb(255, 233, 237);
+  font-size: x-large;
+}
+.field {
+  width: 70em;
+}
+.banner {
+  position: relative;
+  height: 300px;
+  background-image: url("https://www.donnamoderna.com/content/uploads/2020/12/lavatrice-risparmio-energetico-1200x630.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: xx-large;
+}
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 4em;
+}
+
+.item {
+}
+.checkbox {
+  width: 9em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 0em;
+}
+button {
+  width: 9em;
+  height: 5em;
+  border-radius: 1em;
+  font-size: x-large;
+}
+table {
+  width: 90%;
+}
+.scrollable {
+  overflow-y: scroll;
+  height: 11em;
+}
+th {
+  width: 5em;
+}
+.tablerow {
+  display: flex;
+  flex-direction: row;
+  column-gap: 7em;
+}
