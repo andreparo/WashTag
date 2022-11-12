@@ -10,34 +10,20 @@ def index():
 
 #retrive data from DB
 @app.route("/program")
-def get_data(program):
+def get_data():
     connection =psycopg2.connect(host = "localhost", database="Washtags", user="postgres", password="pippi2802")
     connection.autocommit = True
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM programswm WHERE number = %s", (program,))
-    single_program = cursor.fetchone()
+    cursor.execute("SELECT * FROM programswm;")
+    programs = cursor.fetchall()
 
-    print(single_program)
+    print(programs)
     cursor.close()
     connection.close()
-    return render_template("program.html", prog = single_program)
+    return render_template("program.html", progs = programs)
 
 #add program to app
-@app.route("/program/add", methods=["GET", "POST"])
-def add_program():
-    if request.method == "GET":
-        return render_template("add.html")
 
-    if request.method == "POST":
-
-        connection = psycopg2.connect(host="localhost", database="Washtags", user="postgres", password="pippi2802")
-        connection.autocommit = True
-        cursor = connection.cursor()
-        cursor.execute("INSERT INTO programswm (number, name, temperature, spin, typeCloth, duration, ecosaver, prewash VALUES (%s, %s, %s, %s, %s, %s, %s, %s))", (program, name, temp, sping, tc, time, eco, pre))
-        cursor.close()
-        connection.close()
-    
-    return redirect("/program")
 
 
 if __name__ == "__main__": 

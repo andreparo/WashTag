@@ -20,10 +20,19 @@
       <p>&nbsp;</p>
       <div class="columns">
         <div class="row">
-          <label for="program"><strong>Name of the Program</strong></label>
+          <label><strong>Program Number</strong>
+          <select name="number">
+            {% for prog in progs %}
+            <option value="{{prog[0]}}">
+              {{prog[0]}}
+            </option>
+            {% endfor %}
+          </select>
+          </textarea></label>
           
-        
-          <label for="time"><strong>Duration (in minutes)</strong></label>
+          <label for="time"><strong>Duration (in minutes)</strong>
+            <textarea value="minutes"></textarea>
+          </label>
           
           <div class="checkbox">
             <div>
@@ -33,7 +42,7 @@
                 type="checkbox"
                 value="yes"
                 
-              />&nbsp;<strong>Prewash</strong
+              />&nbsp;<strong>Prewash</strong>
             </div>
             <div> <p> </p></div>
             <div>
@@ -57,41 +66,34 @@
         <div class=" item">
             <p><strong>Temperature</strong></p>
             <select>
-            <option disabled="disabled" selected="selected" value=""></option>
-            <option value="b">Beef</option>
-            <option value="ch">Chicken</option>
-            <option value="v">Vegetarian</option>
-            <option value="n">None</option>
+              {% for prog in progs %}
+            <option disabled="disabled"  value="{{prog[2]}}">{{prog[2]}}</option>
+              {% endfor %}
             </select>
+
         </div>
-        <div class=" item">
+        <div class="item">
         <p><strong>Spin</strong></p>
         <select>
-          <option disabled="disabled" selected="selected" value=""></option>
-          <option value="b">Beef</option>
-          <option value="ch">Chicken</option>
-          <option value="v">Vegetarian</option>
-          <option value="n">None</option>
+          {% for spin in spins %}
+          <option disabled="disabled" selected="selected" value="{{spin[0]}}">{{spin[0]}}</option>
+          {% endfor %}
         </select>
         </div>
         <div class=" item">
         <p><strong>Color</strong></p>
-        <select>
-          <option disabled="disabled" selected="selected" value=""></option>
-          <option value="b">Beef</option>
-          <option value="ch">Chicken</option>
-          <option value="v">Vegetarian</option>
-          <option value="n">None</option>
+        <select name="color">
+          {% for color in colors %}
+          <option value="{{color[]}}"></option>
+          {% endfor %}
         </select>
         </div>
         <div class=" item">
         <p><strong>Type of Cloth</strong></p>
         <select>
-          <option disabled="disabled" selected="selected" value=""></option>
-          <option value="b">Beef</option>
-          <option value="ch">Chicken</option>
-          <option value="v">Vegetarian</option>
-          <option value="n">None</option>
+          {% for cloth in clothes %}
+          <option disabled="disabled" selected="selected" value="{{cloth[0]}}">{{cloth[0]}}</option>
+          {% endfor %}
         </select>
         </div>
       </div>
@@ -107,11 +109,7 @@
       </div>
            <table class="row">
         <tr class="tablerow">
-            <th>Program Name</th>
-            <th>Temperature</th>
-            <th>Spin</th>
-            <th>Material</th>
-            <th>Color</th>
+            <th>name of piece of cloth</th>
         </tr>
         </table>
       <div class="scrollable">
@@ -119,156 +117,8 @@
         
         <tr class="tablerow" id="1">
             <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
+           
         </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2d</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3d</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-        <tr class="tablerow">
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-        </tr>
-
       </table>
       </div>
     </form>
