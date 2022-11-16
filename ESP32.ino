@@ -63,7 +63,7 @@ void setup() {
   Serial.println("HTTP server started");
 }
 
-byte readbackblock[18];//This array is used for reading out a block. The MIFARE_Read method requires a buffer that is at least 18 bytes to hold the 16 bytes of a block.
+byte readbackblock[18];   //This array is used for reading out a block. The MIFARE_Read method requires a buffer that is at least 18 bytes to hold the 16 bytes of a block.
 byte Washtag[16];
 
 //Code running in a permanent loop
@@ -87,27 +87,27 @@ void loop(){
   mfrc522.PCD_Init();
 
   // Look for new cards (in case you wonder what PICC means: proximity integrated circuit card)
-  if ( ! mfrc522.PICC_IsNewCardPresent()) {//if PICC_IsNewCardPresent returns 1, a new card has been found and we continue
-    return;//if it did not find a new card is returns a '0' and we return to the start of the loop
+  if ( ! mfrc522.PICC_IsNewCardPresent()) {   //if PICC_IsNewCardPresent returns 1, a new card has been found and we continue
+    return;   //if it did not find a new card is returns a '0' and we return to the start of the loop
   }
 
   // Select one of the cards
-  if ( ! mfrc522.PICC_ReadCardSerial()) {//if PICC_ReadCardSerial returns 1, the "uid" struct (see MFRC522.h lines 238-45)) contains the ID of the read card.
-    return;//if it returns a '0' something went wrong and we return to the start of the loop
+  if ( ! mfrc522.PICC_ReadCardSerial()) {   //if PICC_ReadCardSerial returns 1, the "uid" struct (see MFRC522.h lines 238-45)) contains the ID of the read card.
+    return;   //if it returns a '0' something went wrong and we return to the start of the loop
   }
 
-  readBlock(block, readbackblock);//read the block back
+  readBlock(block, readbackblock);    //read the block back
 
     //Serial.print("read block: ");
-  for (int j=0 ; j<16 ; j++)//print the block contents
+  for (int j=0 ; j<16 ; j++)    //print the block contents
   {
     Washtag[j] = readbackblock[j];
   }  
 
   //Serial.println("read block: ");
-  for (int j=0 ; j<16 ; j++)//print the block contents
+  for (int j=0 ; j<16 ; j++)    //print the block contents
   {
-    Serial.write (Washtag[j]);//Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
+    Serial.write (Washtag[j]);    //Serial.write() transmits the ASCII numbers as human readable characters to serial monitor
   }
 }
 
@@ -148,19 +148,19 @@ String SendHTML(){
 //reads RFID chip
 int readBlock(int blockNumber, byte arrayAddress[]){
   int largestModulo4Number=blockNumber/4*4;
-  int trailerBlock=largestModulo4Number+3;//determine trailer block for the sector
+  int trailerBlock=largestModulo4Number+3;    //determine trailer block for the sector
 
   //authentication of the desired block for access
   byte status = mfrc522.PCD_Authenticate(MFRC522::PICC_CMD_MF_AUTH_KEY_A, trailerBlock, &key, &(mfrc522.uid));
 
   if (status != MFRC522::STATUS_OK) {
-    return 3;//return "3" as error message
+    return 3;   //return "3" as error message
   }
 
-  byte buffersize = 18;//we need to define a variable with the read buffer size, since the MIFARE_Read method below needs a pointer to the variable that contains the size... 
-  status = mfrc522.MIFARE_Read(blockNumber, arrayAddress, &buffersize);//&buffersize is a pointer to the buffersize variable; MIFARE_Read requires a pointer instead of just a number
+  byte buffersize = 18;   //we need to define a variable with the read buffer size, since the MIFARE_Read method below needs a pointer to the variable that contains the size... 
+  status = mfrc522.MIFARE_Read(blockNumber, arrayAddress, &buffersize);   //&buffersize is a pointer to the buffersize variable; MIFARE_Read requires a pointer instead of just a number
   if (status != MFRC522::STATUS_OK) {
-    return 4;//return "4" as error message
+    return 4;   //return "4" as error message
   }
 }
 
